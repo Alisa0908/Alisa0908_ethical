@@ -14,13 +14,16 @@ class EthicalController extends Controller
         $category = $request->category;
 
         $query = Ethical::query();
-        if(!empty($name)) {
+        if (!empty($name)) {
             $query->where('name', 'like', '%' . $name . '%');
         }
-        if(!empty($category)) {
-            $query->where('category', 'like', '%' . $category . '%');
+        if (!empty($category)) {
+            $query->whereHas('category', function ($q) use ($category) {
+                $q->where('name', 'like', '%' . $category . '%');
+            });
         }
-        $ethicals = $query->paginate();
+        $ethicals = $query->paginate(10);
+        $ethicals->appends(compact('name', 'category'));
 
         return view('ethicals.index', compact('ethicals'));
     }
