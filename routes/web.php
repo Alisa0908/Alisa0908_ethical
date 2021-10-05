@@ -14,8 +14,10 @@ use App\Http\Controllers\EthicalController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::resource('ethicals', EthicalController::class)->only(['index', 'show']);
+Route::get('/', [EthicalController::class, 'index'])->name('root');
+
+Route::resource('ethicals', EthicalController::class);

@@ -20,7 +20,12 @@ class CreateEthicalsTable extends Migration
             $table->integer('price');
             $table->text('image_url');
             $table->text('goods_url');
-            $table->integer('category_id');
+            $table->integer('category_id')              
+                ->unsigned()                            
+                ->default(1);
+            $table->foreign('category_id')              
+                ->references('id')->on('categories')    
+                ->onDelete('restrict');         
             $table->text('materials');
             $table->text('logistics');
             $table->timestamps();

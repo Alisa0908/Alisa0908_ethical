@@ -7,7 +7,7 @@
         <ul>
             @foreach ($ethicals as $ethical)
                 <li class="list-unstyled border mb-5 pl-3 shadow">
-                    @include('partial.restaurant')
+                    @include('partial.ethical')
                 </li>
             @endforeach
         </ul>

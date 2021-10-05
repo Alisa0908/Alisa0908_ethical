@@ -10004,3 +10004,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.square-img {
+  width: 240px;
+  height: 240px;
+}

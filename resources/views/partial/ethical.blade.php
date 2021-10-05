@@ -10,7 +10,7 @@
         </div>
         <div>
             <div>{{ $ethical->company }}</div>
-            <div>{{ $ethical->price }}</div>
+            <div>¥ {{ $ethical->price }}</div>
         </div>
     </div>
 </div>
