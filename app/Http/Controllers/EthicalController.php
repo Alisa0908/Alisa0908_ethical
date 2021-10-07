@@ -50,7 +50,7 @@ class EthicalController extends Controller
         $ethical->price = $request->price;
         $ethical->image_url = $request->image_url;
         $ethical->goods_url = $request->goods_url;
-        $ethical->category_id = $request->category_id;
+        $ethical->category_id = $request->category;
         $ethical->materials = $request->materials;
         $ethical->logistics = $request->logistics;
 
@@ -72,7 +72,7 @@ class EthicalController extends Controller
         $ethical->price = $request->price;
         $ethical->image_url = $request->image_url;
         $ethical->goods_url = $request->goods_url;
-        $ethical->category_id = $request->category_id;
+        $ethical->category_id = $request->category;
         $ethical->materials = $request->materials;
         $ethical->logistics = $request->logistics;
 
