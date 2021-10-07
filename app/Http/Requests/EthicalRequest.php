@@ -29,7 +29,7 @@ class EthicalRequest extends FormRequest
             'price' => 'required|integer|min:1',
             'image_url' => 'required|active_url',
             'goods_url' => 'required|active_url',
-            // 'category' => 'required|string',
+            'category_id' => 'required|string',
             'materials' => 'required|string',
             'logistics' => 'required|string',
         ];

@@ -3,6 +3,18 @@
 @section('title', '商品登録')
 
 @section('content')
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action="{{ route('ethicals.update', $ethical) }}" method="post">
         @csrf
         @method('PATCH')
@@ -30,10 +42,10 @@
             <input type="text" class="form-control" name="goods_url" id="goods_url"
                 value="{{ old('goods_url', $ethical->goods_url) }}">
         </div>
-        <label for="category">カテゴリー</label>
-        <select class="form-group" name="category" id="category">
+        <label for="category_id">カテゴリー</label>
+        <select class="form-group" name="category_id" id="category_id">
             @foreach ($categories as $category)
-                <option value="{{ $category->id }}" @if (old('category') == $category->id) selected @endif>{{ $category->name }}</option>
+                <option value="{{ $category->id }}" @if (old('category_id', $ethical->category_id) == $category->id) selected @endif>{{ $category->name }}</option>
             @endforeach
         </select>
         <div class="form-group">
@@ -46,9 +58,8 @@
             <input type="text" class="form-control" name="logistics" id="logistics"
                 value="{{ old('logistics', $ethical->logistics) }}">
         </div>
-
-        <div>
-            <input type="submit" value="更新">
-        </div>
+        <input class="btn btn-primary" type="submit" value="更新">
+        <button type="button" onclick="location.href='{{ route('ethicals.index') }}'"
+            class="btn btn-outline-secondary mr-2">戻る</button>
     </form>
 @endsection

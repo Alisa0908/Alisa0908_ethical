@@ -21,8 +21,7 @@ class CreateEthicalsTable extends Migration
             $table->text('image_url');
             $table->text('goods_url');
             $table->integer('category_id')              
-                ->unsigned()                            
-                ->default(1);
+                ->unsigned();
             $table->foreign('category_id')              
                 ->references('id')->on('categories')    
                 ->onDelete('restrict');         

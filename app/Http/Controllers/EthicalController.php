@@ -36,21 +36,21 @@ class EthicalController extends Controller
 
     public function create()
     {
-        $ethical = new Ethical;
+        $ethical = new Ethical();
         $categories = Category::all();
         return view('ethicals.create', compact('ethical', 'categories'));
     }
 
     public function store(EthicalRequest $request)
     {
-        $ethical = new Ethical;
+        $ethical = new Ethical();
 
         $ethical->name = $request->name;
         $ethical->company = $request->company;
         $ethical->price = $request->price;
         $ethical->image_url = $request->image_url;
         $ethical->goods_url = $request->goods_url;
-        $ethical->category_id = $request->category;
+        $ethical->category_id = $request->category_id;
         $ethical->materials = $request->materials;
         $ethical->logistics = $request->logistics;
 
@@ -72,7 +72,7 @@ class EthicalController extends Controller
         $ethical->price = $request->price;
         $ethical->image_url = $request->image_url;
         $ethical->goods_url = $request->goods_url;
-        $ethical->category_id = $request->category;
+        $ethical->category_id = $request->category_id;
         $ethical->materials = $request->materials;
         $ethical->logistics = $request->logistics;
 
