@@ -55,9 +55,8 @@
             <label for="logistics">生産場所</label>
             <input type="text" class="form-control" name="logistics" id="logistics" value="{{ old('logistics') }}">
         </div>
-
-        <div>
-            <input type="submit" value="登録">
-        </div>
+        <input class="btn btn-primary" type="submit" value="登録">
+        <button type="button" onclick="location.href='{{ route('ethicals.index') }}'"
+            class="btn btn-outline-secondary mr-2">戻る</button>
     </form>
 @endsection
