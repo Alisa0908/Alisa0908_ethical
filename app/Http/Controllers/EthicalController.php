@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ethical;
 use App\Models\Category;
+use App\Http\Requests\EthicalRequest;
 
 class EthicalController extends Controller
 {
@@ -35,21 +36,54 @@ class EthicalController extends Controller
 
     public function create()
     {
-        return view('ethicals.create');
+        $ethical = new Ethical;
+        $categories = Category::all();
+        return view('ethicals.create', compact('ethical', 'categories'));
     }
 
-    public function store(Ethical $ethical)
+    public function store(EthicalRequest $request)
     {
-        return redirect('ethicals.index');
+        $ethical = new Ethical;
+
+        $ethical->name = $request->name;
+        $ethical->company = $request->company;
+        $ethical->price = $request->price;
+        $ethical->image_url = $request->image_url;
+        $ethical->goods_url = $request->goods_url;
+        $ethical->category_id = $request->category_id;
+        $ethical->materials = $request->materials;
+        $ethical->logistics = $request->logistics;
+
+        $ethical->save();
+
+        return redirect()->route('ethicals.index');
     }
 
-    public function update(Ethical $ethical)
+    public function edit(Ethical $ethical)
     {
-        return redirect('ethicals.index');
+        $categories = Category::all();
+        return view('ethicals.edit', compact('ethical', 'categories'));
     }
 
-    public function destroy()
+    public function update(Ethical $ethical, EthicalRequest $request)
     {
-        return redirect('ethicals.destroy');
+        $ethical->name = $request->name;
+        $ethical->company = $request->company;
+        $ethical->price = $request->price;
+        $ethical->image_url = $request->image_url;
+        $ethical->goods_url = $request->goods_url;
+        $ethical->category_id = $request->category_id;
+        $ethical->materials = $request->materials;
+        $ethical->logistics = $request->logistics;
+
+        $ethical->save();
+
+        return redirect()->route('ethicals.show', $ethical);
+    }
+
+    public function destroy(Ethical $ethical)
+    {
+        $ethical->delete();
+        return redirect()->route('ethicals.index');
     }
 }

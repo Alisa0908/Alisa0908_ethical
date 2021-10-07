@@ -3,6 +3,7 @@
 @section('title', '商品一覧')
 
 @section('content')
+
     @if (!empty($ethicals))
         <ul>
             @foreach ($ethicals as $ethical)

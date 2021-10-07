@@ -25,5 +25,13 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ route('ethicals.index')}}">戻る</a>
+    <div class="d-flex">
+        <a href="{{ route('ethicals.edit', $ethical) }}" class="btn btn-outline-primary mr-2">編集</a>
+        <a href="{{ route('ethicals.index') }}" class="btn btn-outline-secondary mr-2">戻る</a>
+        <form action="{{ route('ethicals.destroy', $ethical) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="削除" class="btn btn-outline-danger" onclick="if(!confirm('削除しますか？')){return false;}">
+        </form>
+    </div>
 @endsection
